@@ -18,6 +18,17 @@
 > * 客户端负载均衡——Netflix Ribbon
 > * 断路器——Netflix Hystrix
 
+## 效果演示
+
+**本地访问地址：**
+
+* http://localhost:1001 - 注册中心
+
+* http://localhost:1006/business - 业务中心
+* http://localhost:1003/business - 测试网关是否成功转发到业务中心
+
+![image-20201212164537237](.\screenshots\image-20201212164537237.png)
+
 ## 一、 创建spring-cloud-demo
 
 **1.创建spring-cloud-demo文件夹，新建<font color="red">pom.xml</font>文件，文件内容：**
@@ -694,8 +705,8 @@ eureka:
 
 * http://localhost:1001 - 注册中心
 
-* http://localhost:1006 - 业务中心
-* http://localhost:1003 - 测试网关是否成功转发到业务中心
+* http://localhost:1006/business - 业务中心
+* http://localhost:1003/business - 测试网关是否成功转发到业务中心
 
 
 
@@ -760,3 +771,7 @@ spring:
     <artifactId>spring-boot-starter-web</artifactId>
 </dependency>
 ```
+
+**文章地址：**[https://blog.csdn.net/qq_33204709/article/details/111068089](https://blog.csdn.net/qq_33204709/article/details/111068089)
+
+**代码地址：**[https://github.com/ACGkaka/spring-cloud-demo](https://github.com/ACGkaka/spring-cloud-demo)

@@ -24,6 +24,6 @@ public class WelcomeController {
     @ResponseBody
     public String welcome() {
         LOGGER.info("有一个用户访问了系统。");
-        return "Hello World";
+        return "<h1> 这是业务中心的一个页面~ </h1>";
     }
 }
