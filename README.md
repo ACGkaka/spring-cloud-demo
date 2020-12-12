@@ -22,10 +22,10 @@
 
 **本地访问地址：**
 
-* http://localhost:1001 - 注册中心
+* <u>http://localhost:1001</u> - 注册中心
 
-* http://localhost:1006/business - 业务中心
-* http://localhost:1003/business - 测试网关是否成功转发到业务中心
+* <u>http://localhost:1006/business</u> - 业务中心
+* <u>http://localhost:1003/business</u> - 测试网关是否成功转发到业务中心
 
 ![image-20201212164537237](.\screenshots\image-20201212164537237.png)
 
