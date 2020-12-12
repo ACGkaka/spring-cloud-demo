@@ -4,15 +4,19 @@
 
 一个立志成为种子项目的 Spring Cloud Demo。
 
-# 从零开始搭建Spring Cloud
+# 从零开始创建Spring Cloud
+
+**文章地址：**[https://blog.csdn.net/qq_33204709/article/details/111068089](https://blog.csdn.net/qq_33204709/article/details/111068089)
+
+**代码地址：**[https://github.com/ACGkaka/spring-cloud-demo](https://github.com/ACGkaka/spring-cloud-demo)
 
 > **Spring Cloud 5个核心组件：**
 >
 > * 注册中心——Netflix Eureka
 > * 配置中心——Spring Cloud Config
 > * 服务网关——Spring Cloud Gateway
-> * 客户端负载均衡——Netflix Ribbon（待集成）
-> * 断路器——Netflix Hystrix（待集成）
+> * 客户端负载均衡——Netflix Ribbon
+> * 断路器——Netflix Hystrix
 
 ## 一、 创建spring-cloud-demo
 
@@ -746,7 +750,7 @@ spring:
 
 
 
-### 4. 业务中心启动闪退
+### 4. 业务中心启动后直接退出
 
 * 增加如下依赖即可：
 
