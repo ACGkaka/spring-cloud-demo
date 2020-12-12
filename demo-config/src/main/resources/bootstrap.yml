@@ -1,0 +1,22 @@
+server:
+  port: 1002
+
+spring:
+  application:
+    # 用于在 eureka 面板显示
+    name: demo-config
+  profiles:
+    # 必填
+    active: native
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/repository
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:1001/eureka/

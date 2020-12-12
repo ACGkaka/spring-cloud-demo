@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: demo-gateway
+  profiles:
+    active: dev
+  cloud:
+    config:
+      # 获取不到远程配置的时候立即失败，而不是没有意义地等待
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: demo-config
+      profile: ${spring.profiles.active}
+      retry:
+        max-attempts: 5  # 配置重试次数，默认为5
+        multiplier: 1.1  # 间隔乘数，默认1.1
+        initial-interval: 1000  # 初始重试间隔时间，默认1000ms
+        max-interval: 2000  # 最大间隔时间，默认2000ms
+    gateway:
+      discovery:
+        locator:
+          # 使用服务发现客户端接口DiscoveryClient，从服务注册中心获取服务注册信息，然后配置相应的路由。
+          enabled: true
+          # 将请求路径上的服务名配置为小写
+          lower-case-service-id: true
+      routes:
+        # id：我们自定义的路由 ID，保持唯一
+        - id: demo-business-test
+          # uri：目标服务地址
+          uri: lb://demo-business
+          # predicates：路由条件，Predicate 接受一个输入参数，返回一个布尔值结果。该接口包含多种默认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。
+          predicates:
+            - Path=/business/**
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:1001/eureka/
