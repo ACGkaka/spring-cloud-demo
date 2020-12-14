@@ -15,8 +15,11 @@
 > * 注册中心——Netflix Eureka
 > * 配置中心——Spring Cloud Config
 > * 服务网关——Spring Cloud Gateway
-> * 客户端负载均衡——Netflix Ribbon（待集成）
-> * 断路器——Netflix Hystrix（待集成）
+> * 客户端负载均衡——Netflix Ribbon
+> * 断路器——Netflix Hystrix
+
+> **集成的其他组件：**
+> * Mybatis
 
 ## 效果演示
 
