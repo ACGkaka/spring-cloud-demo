@@ -19,4 +19,4 @@ eureka:
     hostname: localhost
   client:
     service-url:
-      defaultZone: http://${eureka.instance.hostname}:1001/eureka/
+      defaultZone: http://demo:Demo2020@${eureka.instance.hostname}:1001/eureka/
