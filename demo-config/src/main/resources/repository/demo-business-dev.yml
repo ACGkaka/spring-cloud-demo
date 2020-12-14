@@ -1,2 +1,12 @@
 server:
   port: 1006
+
+ribbon:
+  # http建立socket超时时间,毫秒
+  ConnectTimeout: 5000
+  # http读取响应socket超时时间
+  ReadTimeout: 8000
+#  # 设置Ribbon的饥饿加载(eager-load)模式。
+#  eager-load:
+#    enabled: true # 开启Ribbon的饥饿加载模式
+#    clients: ts-auth,ts-biz-support # 指定需要饥饿加载的服务名

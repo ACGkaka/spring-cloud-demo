@@ -1,18 +1,9 @@
 server:
-  port: 1002
+  port: 2003
 
 spring:
   application:
-    # 用于在 eureka 面板显示
-    name: demo-config
-  profiles:
-    # 必填
-    active: native
-  cloud:
-    config:
-      server:
-        native:
-          search-locations: classpath:/repository
+    name: demo-gateway
 
 eureka:
   instance:
