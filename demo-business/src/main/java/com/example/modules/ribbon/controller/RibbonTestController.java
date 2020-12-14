@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * <p> @Title RibbonTestController
  * <p> @Description 测试 Ribbon 的轮询策略
  *
- * @author zhj
+ * @author ACGkaka
  * @date 2020/12/14 14:44
  */
 @Controller

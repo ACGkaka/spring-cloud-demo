@@ -17,6 +17,13 @@
     </properties>
 
     <dependencies>
+
+        <!-- Hystrix -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+
         <!-- Mybatis -->
 <!--        <dependency>-->
 <!--            <groupId>org.mybatis.spring.boot</groupId>-->
@@ -43,11 +50,13 @@
             <optional>true</optional>
         </dependency>
 
+        <!-- Spring boot Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Spring boot Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

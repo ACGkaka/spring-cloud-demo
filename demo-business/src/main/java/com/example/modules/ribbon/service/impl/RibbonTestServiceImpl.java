@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
  * <p> @Title RibbonTestServiceImpl
  * <p> @Description 测试 Ribbon 的轮询策略
  *
- * @author zhj
+ * @author ACGkaka
  * @date 2020/12/14 14:47
  */
 @Service
