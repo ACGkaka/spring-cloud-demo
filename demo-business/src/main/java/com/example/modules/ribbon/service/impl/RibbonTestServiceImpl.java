@@ -3,7 +3,6 @@ package com.example.modules.ribbon.service.impl;
 import com.example.modules.ribbon.service.RibbonTestService;
 import lombok.AllArgsConstructor;
 import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Service;
 

@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * 用户表(SysUser)实体类
  *
- * @author zhj
+ * @author ACGkaka
  * @since 2020-12-14 18:34:31
  */
 @Data

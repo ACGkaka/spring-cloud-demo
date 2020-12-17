@@ -23,6 +23,7 @@
         <module>demo-config</module>
         <module>demo-gateway</module>
         <module>demo-business</module>
+        <module>demo-auth</module>
     </modules>
 
     <properties>

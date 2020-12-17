@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * 用户表(SysUser)表服务接口
  *
- * @author zhj
+ * @author ACGkaka
  * @since 2020-12-14 18:34:33
  */
 public interface MybatisTestService {

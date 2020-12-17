@@ -1,0 +1,22 @@
+server:
+  port: 1004
+
+spring:
+  application:
+    name: demo-auth
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    encoding: UTF-8
+    cache: false
+  resources:
+    static-locations: classpath:statics/
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true # 是否使用 ip 地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} # ip:port
+  client:
+    service-url:
+      defaultZone: http://demo:Demo2020@${eureka.instance.hostname}:1001/eureka/
