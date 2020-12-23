@@ -2,7 +2,7 @@ package com.example.auth.config;
 
 import com.example.auth.security.service.ITDragonJwtAuthenticationEntryPoint;
 import com.example.auth.security.service.ITDragonJwtAuthenticationTokenFilter;
-import com.example.auth.security.service.ITDragonLogoutSuccessHandler;
+import com.example.auth.security.service.MyLogoutSuccessHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
  * <p> @Title ITDragonWebSecurityConfig
  * <p> @Description 认证配置
  *
- * @author zhj
+ * @author ACGkaka
  * @date 2020/12/22 9:52
  */
 @Configuration
@@ -31,7 +31,7 @@ public class ITDragonWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private ITDragonJwtAuthenticationEntryPoint authenticationEntryPoint;
 
-    private ITDragonLogoutSuccessHandler logoutSuccessHandler;
+    private MyLogoutSuccessHandler logoutSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -56,18 +56,18 @@ public class ITDragonWebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         // 添加jwt过滤器
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
-        // 配置异常处理器
-        .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)
-                .and()
+                // 配置未认证异常处理器
+                .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)
+//                .and()
                 // 设置登陆页
-                .formLogin().loginPage("/auth/login")
+//                .formLogin().loginPage("/auth/login")
                 // 配置登出逻辑
                 .and().logout()
                 .logoutSuccessHandler(logoutSuccessHandler)
                 // 开启权限拦截
                 .and().authorizeRequests()
                 // 开放不需要拦截的请求
-//                .antMatchers(HttpMethod.POST, "/itdragon/api/v1/user").permitAll()
+                .antMatchers(HttpMethod.POST, "/login").permitAll()
                 // 允许所有OPTIONS请求
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // 允许静态资源访问
@@ -85,6 +85,11 @@ public class ITDragonWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().csrf().disable()
                 // 允许跨域请求
                 .cors().disable();
+    }
+
+    public static void main(String[] args) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        System.out.println(encoder.encode("admin"));
     }
 
 }

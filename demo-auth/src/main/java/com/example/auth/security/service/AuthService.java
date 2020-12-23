@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
  * <p> @Title ITDragonAuthService
  * <p> @Description 登录Service
  *
- * @author zhj
+ * @author ACGkaka
  * @date 2020/12/22 17:42
  */
 @Service
@@ -26,6 +26,8 @@ public class AuthService {
     private AuthenticationManager authenticationManager;
 
     private UserDetailsService userDetailsService;
+
+    private JwtTokenUtil jwtTokenUtil;
 
     /**
      * 处理登录请求
@@ -43,7 +45,7 @@ public class AuthService {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         // 生成token并返回
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        return JwtTokenUtil.generateToken(userDetails.getUsername());
+        return jwtTokenUtil.generateToken(userDetails.getUsername());
     }
 
 }

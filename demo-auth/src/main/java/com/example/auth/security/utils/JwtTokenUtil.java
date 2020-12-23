@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -14,24 +15,25 @@ import java.util.Map;
  * <p> @Title JwtTokenUtil
  * <p> @Description TODO
  *
- * @author zhj
+ * @author ACGkaka
  * @date 2020/12/22 10:13
  */
+@Component
 public class JwtTokenUtil {
 
     private static final String CLAIM_KEY_USERNAME = "itdragon";
 
     @Value("${itdragon.jwt.secret:ITDragon}")
-    private static String secret;
+    private String secret;
 
     @Value("${itdragon.jwt.expiration:86400}")
-    private static Long expiration;
+    private Long expiration;
 
     /**
      * 生成令牌Token
      * 1. 建议使用唯一、可读性高的字段作为生成令牌的参数
      */
-    public static String generateToken(String username) {
+    public String generateToken(String username) {
         try {
             Map<String, Object> claims = new HashMap<>();
             claims.put(CLAIM_KEY_USERNAME, username);
@@ -87,7 +89,7 @@ public class JwtTokenUtil {
     /**
      * 从token 中获取用户名
      */
-    public static String getUsernameFromToken(String token) {
+    public String getUsernameFromToken(String token) {
         try {
             Claims claims = parseJWT(token);
             return claims.get(CLAIM_KEY_USERNAME).toString();
@@ -99,7 +101,7 @@ public class JwtTokenUtil {
     /**
      * 生成jwt方法
      */
-    public static String generateJWT(Map<String, Object> claims){
+    public String generateJWT(Map<String, Object> claims){
         return Jwts.builder()
                 .setClaims(claims)      // 定义属性
                 // .设计如下：(Date())    // 设置发行时间
@@ -111,7 +113,7 @@ public class JwtTokenUtil {
     /**
      * 解析jwt方法
      */
-    private static Claims parseJWT(String token) {
+    private Claims parseJWT(String token) {
         try {
             return Jwts.parser()
                     .setSigningKey(secret)  // 设置密钥

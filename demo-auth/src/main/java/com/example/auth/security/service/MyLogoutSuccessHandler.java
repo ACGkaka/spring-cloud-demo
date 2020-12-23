@@ -1,6 +1,5 @@
 package com.example.auth.security.service;
 
-import com.alibaba.fastjson.JSONObject;
 import com.example.auth.security.entity.JwtUser;
 import com.example.auth.user.entity.SysUser;
 import org.springframework.security.core.Authentication;
@@ -9,20 +8,17 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.PrintWriter;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * <p> @Title ITDragonLogoutSuccessHandler
- * <p> @Description TODO
+ * <p> @Description 退出登录成功处理器
  *
- * @author zhj
+ * @author ACGkaka
  * @date 2020/12/22 10:51
  */
 @Component
-public class ITDragonLogoutSuccessHandler implements LogoutSuccessHandler {
+public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
@@ -35,15 +31,18 @@ public class ITDragonLogoutSuccessHandler implements LogoutSuccessHandler {
 //                userRepository.save(user);
             }
 
-            // 返回json格式数据
-            response.setContentType("application/json;charset=utf-8");
-            PrintWriter out = response.getWriter();
-            Map<String, Object> map = new HashMap<>();
-            map.put("code", 200);
-            map.put("message", "登出成功");
-            out.write(JSONObject.toJSONString(map));
-            out.flush();
-            out.close();
+            // 方式一：返回json格式数据
+//            response.setContentType("application/json;charset=utf-8");
+//            PrintWriter out = response.getWriter();
+//            Map<String, Object> map = new HashMap<>();
+//            map.put("code", 200);
+//            map.put("message", "登出成功");
+//            out.write(JSONObject.toJSONString(map));
+//            out.flush();
+//            out.close();
+
+            // 方式二：返回登录页面
+            response.sendRedirect("/auth/login");
         } catch (Exception e) {
             e.printStackTrace();
         }

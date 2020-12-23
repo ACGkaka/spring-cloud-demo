@@ -2,14 +2,13 @@ package com.example.auth.user.entity;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
  * <p> @Title SysUser
  * <p> @Description 系统用户
  *
- * @author zhj
+ * @author ACGkaka
  * @date 2020/12/22 14:32
  */
 @Data

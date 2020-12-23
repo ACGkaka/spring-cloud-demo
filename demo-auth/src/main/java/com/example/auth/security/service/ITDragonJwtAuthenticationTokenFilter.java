@@ -25,7 +25,7 @@ import java.io.IOException;
  * <p> @Title ITDragonJwtAuthenticationTokenFilter
  * <p> @Description 过滤器配置 - OncePerRequestFilter 顾名思义，它能够确保在一次请求中只通过一次filter，而不会重复执行，是由Spring提供的抽象类
  *
- * @author zhj
+ * @author ACGkaka
  * @date 2020/12/22 10:11
  */
 @Slf4j
@@ -36,8 +36,13 @@ public class ITDragonJwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Value("${itdragon.jwt.header:Authorization}")
     private String tokenHeader;
+
     @Value("${itdragon.jwt.tokenHead:Bearer}")
     private String tokenHead;
+
+    @Autowired
+    private JwtTokenUtil jwtTokenUtil;
+
     @Autowired
     private MyUserDetailsService userDetailsService;
 
@@ -57,7 +62,7 @@ public class ITDragonJwtAuthenticationTokenFilter extends OncePerRequestFilter {
         if (authHeader != null && authHeader.startsWith(tokenHead)) {
             String authToken = authHeader.substring(tokenHead.length());
             // 从token中获取用户信息
-            String username = JwtTokenUtil.getUsernameFromToken(authToken);
+            String username = jwtTokenUtil.getUsernameFromToken(authToken);
             if (Strings.isBlank(username)) {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized: Auth token is illegal");
                 return;

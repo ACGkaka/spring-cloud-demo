@@ -14,20 +14,20 @@ import org.springframework.stereotype.Service;
  * <p> @Title ITDragonUserDetailsService
  * <p> @Description 系统用户认证配置
  *
- * @author zhj
+ * @author ACGkaka
  * @date 2020/12/22 13:50
  */
 @Service
 public class MyUserDetailsService implements UserDetailsService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(MyUserDetailsService.class);
+    private final Logger logger = LoggerFactory.getLogger(MyUserDetailsService.class);
 
     @Autowired
     private SysUserService sysUserService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        LOGGER.info("用户登录: {}", username);
+        logger.info("用户登录: {}", username);
         // todo ... something
         return new JwtUser(sysUserService.findByUsername(username));
     }

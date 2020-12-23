@@ -13,7 +13,7 @@ import java.util.Objects;
  * <p> @Title ITDragonJwtAuthenticationEntryPoint
  * <p> @Description 处理没有登录的请求
  *
- * @author zhj
+ * @author ACGkaka
  * @date 2020/12/22 10:49
  */
 @Component

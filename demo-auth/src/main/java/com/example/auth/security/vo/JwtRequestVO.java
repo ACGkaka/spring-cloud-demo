@@ -6,7 +6,7 @@ import lombok.Data;
  * <p> @Title JwtRequestVO
  * <p> @Description 登录请求体
  *
- * @author zhj
+ * @author ACGkaka
  * @date 2020/12/22 17:38
  */
 @Data
