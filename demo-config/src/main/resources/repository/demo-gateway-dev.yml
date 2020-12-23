@@ -2,16 +2,6 @@ server:
   port: 1003
 
 spring:
-  datasource:
-    username: root
-    password: root
-    url: jdbc:mysql://localhost:3306/spring-cloud-demo?useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT
-    driver-class-name: com.mysql.jdbc.Driver
-    # 使用druid数据源
-  security:
-    user:
-      name: admin
-      password: 123456
   cloud:
     gateway:
       discovery:
