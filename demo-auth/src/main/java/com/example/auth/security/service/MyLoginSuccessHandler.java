@@ -28,13 +28,16 @@ public class MyLoginSuccessHandler extends SavedRequestAwareAuthenticationSucces
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
         /* 默认：会帮我们跳转到上一次请求的页面上 */
-        //super.onAuthenticationSuccess(request, response, authentication);
-        response.setStatus(HttpServletResponse.SC_OK);
-        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
-        PrintWriter writer = response.getWriter();
-        writer.write("登录成功");
-        writer.flush();
-        writer.close();
+        super.onAuthenticationSuccess(request, response, authentication);
+
+        /// 定制化登录成功
+//        logger.error("登录成功 ");
+//        response.setStatus(HttpServletResponse.SC_OK);
+//        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+//        PrintWriter writer = response.getWriter();
+//        writer.write("登录成功");
+//        writer.flush();
+//        writer.close();
     }
 }
 

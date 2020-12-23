@@ -27,15 +27,17 @@ public class MyLoginFailureHandler extends SimpleUrlAuthenticationFailureHandler
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        /* 默认：执行重定向或转发到defaultfailureurl(如果设置)，Otherw返回401错误代码 */
-        //super.onAuthenticationFailure(request,response,exception)
-        logger.error("登录错误 [{}] ",exception.getMessage());
-        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
-        PrintWriter writer = response.getWriter();
-        writer.write(exception.getMessage());
-        writer.flush();
-        writer.close();
+        /* 默认：执行重定向或转发到defaultFailureUrl(如果设置)，Otherwise返回401错误代码 */
+        super.onAuthenticationFailure(request,response,exception);
+
+        /// 定制化登陆失败
+//        logger.error("登录错误 [{}] ",exception.getMessage());
+//        response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+//        response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
+//        PrintWriter writer = response.getWriter();
+//        writer.write(exception.getMessage());
+//        writer.flush();
+//        writer.close();
     }
 }
 

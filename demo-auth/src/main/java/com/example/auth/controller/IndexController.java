@@ -29,16 +29,17 @@ public class IndexController {
         return "login";
     }
 
-//    @PostMapping("/login")
-//    public ResponseEntity createAuthenticationToken(String username, String password) {
-//        String token = authService.login(username, password);
-//
-//        return ResponseEntity.ok(new JwtResponseVO(token));
-//    }
     @PostMapping("/login")
-    public void createAuthenticationToken(String username, String password) {
-        authService.login(username, password);
+    public ResponseEntity createAuthenticationToken(String username, String password) {
+        String token = authService.login(username, password);
+
+        return ResponseEntity.ok(new JwtResponseVO(token));
     }
+
+//    @PostMapping("/login")
+//    public void createAuthenticationToken(String username, String password) {
+//        authService.login(username, password);
+//    }
 
     @RequestMapping("/index")
     public String index() {

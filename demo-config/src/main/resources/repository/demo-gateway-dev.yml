@@ -12,16 +12,6 @@ spring:
           lower-case-service-id: true
       routes:
         # id：我们自定义的路由 ID，保持唯一
-        - id: demo-business-modules
-          # uri：目标服务地址
-          uri: lb://demo-business
-          # predicates：路由条件，Predicate 接受一个输入参数，返回一个布尔值结果。该接口包含多种默认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。
-          predicates:
-            - Path=/business/**
-          filters:
-            # 过滤掉的路径个数，/business/index -> /index
-            - StripPrefix=1
-        # id：我们自定义的路由 ID，保持唯一
         - id: demo-auth-login
           # uri：目标服务地址
           uri: lb://demo-auth
@@ -29,7 +19,17 @@ spring:
           predicates:
             - Path=/auth/**
           filters:
-            # 过滤掉的路径个数，/business/index -> /index
+            # 过滤掉的路径个数，为1时，/business/index -> /index
+            - StripPrefix=1
+        # id：我们自定义的路由 ID，保持唯一
+        - id: demo-business-modules
+          # uri：目标服务地址
+          uri: lb://demo-business
+          # predicates：路由条件，Predicate 接受一个输入参数，返回一个布尔值结果。该接口包含多种默认方法来将 Predicate 组合成其他复杂的逻辑（比如：与，或，非）。
+          predicates:
+            - Path=/business/**
+          filters:
+            # 过滤掉的路径个数，为1时，/business/index -> /index
             - StripPrefix=1
 
 ribbon:

@@ -2,6 +2,7 @@ package com.example.auth.config;
 
 import com.example.auth.security.service.ITDragonJwtAuthenticationEntryPoint;
 import com.example.auth.security.service.ITDragonJwtAuthenticationTokenFilter;
+import com.example.auth.security.service.MyLoginSuccessHandler;
 import com.example.auth.security.service.MyLogoutSuccessHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -33,6 +34,8 @@ public class ITDragonWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private MyLogoutSuccessHandler logoutSuccessHandler;
 
+    private MyLoginSuccessHandler loginSuccessHandler;
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -58,16 +61,16 @@ public class ITDragonWebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 // 配置未认证异常处理器
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint)
-//                .and()
+                .and()
                 // 设置登陆页
-//                .formLogin().loginPage("/auth/login")
+                .formLogin().loginPage("/login").successHandler(loginSuccessHandler)
                 // 配置登出逻辑
                 .and().logout()
                 .logoutSuccessHandler(logoutSuccessHandler)
                 // 开启权限拦截
                 .and().authorizeRequests()
                 // 开放不需要拦截的请求
-                .antMatchers(HttpMethod.POST, "/login").permitAll()
+//                .antMatchers(HttpMethod.POST, "/itdragon/api/v1/user").permitAll()
                 // 允许所有OPTIONS请求
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 // 允许静态资源访问

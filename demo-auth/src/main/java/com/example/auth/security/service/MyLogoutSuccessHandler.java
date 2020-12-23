@@ -31,7 +31,10 @@ public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
 //                userRepository.save(user);
             }
 
-            // 方式一：返回json格式数据
+            // 方式一：返回登录页面
+            response.sendRedirect("/auth/login");
+
+            /// 方式二：返回json格式数据
 //            response.setContentType("application/json;charset=utf-8");
 //            PrintWriter out = response.getWriter();
 //            Map<String, Object> map = new HashMap<>();
@@ -40,9 +43,6 @@ public class MyLogoutSuccessHandler implements LogoutSuccessHandler {
 //            out.write(JSONObject.toJSONString(map));
 //            out.flush();
 //            out.close();
-
-            // 方式二：返回登录页面
-            response.sendRedirect("/auth/login");
         } catch (Exception e) {
             e.printStackTrace();
         }
