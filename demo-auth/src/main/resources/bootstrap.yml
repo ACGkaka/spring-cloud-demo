@@ -1,26 +1,21 @@
-server:
-  port: 1004
-
 spring:
   application:
     name: demo-auth
-  datasource:
-    username: root
-    password: root
-    url: jdbc:mysql://localhost:3306/spring-cloud-demo?useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT
-    driver-class-name: com.mysql.jdbc.Driver
-    # 使用druid数据源
-  thymeleaf:
-    prefix: classpath:templates/
-    suffix: .html
-    encoding: UTF-8
-    cache: false
-  resources:
-    static-locations: classpath:statics/
-
-mybatis:
-  basepackage: com.example.auth
-  mapper-locations: "classpath*:mapper/**/*.xml"
+  profiles:
+    active: dev
+  cloud:
+    config:
+      # 获取不到远程配置的时候立即失败，而不是没有意义地等待
+      fail-fast: true
+      discovery:
+        enabled: true
+        service-id: demo-config
+      profile: ${spring.profiles.active}
+      retry:
+        max-attempts: 5  # 配置重试次数，默认为5
+        multiplier: 1.1  # 间隔乘数，默认1.1
+        initial-interval: 1000  # 初始重试间隔时间，默认1000ms
+        max-interval: 2000  # 最大间隔时间，默认2000ms
 
 eureka:
   instance:
@@ -32,20 +27,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://demo:Demo2020@${eureka.instance.hostname}:1001/eureka/
-
-itdragon:
-  jwt:
-    secret: ITDragon
-    expiration: 86400
-    header: Authorization
-    tokenHead: Bearer
-
-ribbon:
-  # http建立socket超时时间,毫秒
-  ConnectTimeout: 5000
-  # http读取响应socket超时时间
-  ReadTimeout: 8000
-#  # 设置Ribbon的饥饿加载(eager-load)模式。
-#  eager-load:
-#    enabled: true # 开启Ribbon的饥饿加载模式
-#    clients: ts-auth,ts-biz-support # 指定需要饥饿加载的服务名

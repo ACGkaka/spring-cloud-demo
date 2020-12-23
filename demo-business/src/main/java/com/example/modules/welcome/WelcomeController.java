@@ -21,9 +21,8 @@ public class WelcomeController {
     private static final Logger LOGGER = LoggerFactory.getLogger(WelcomeController.class);
 
     @RequestMapping("/index")
-    @ResponseBody
     public String welcome() {
         LOGGER.info("有一个用户访问了系统。");
-        return "<h1> 这是业务中心的一个页面~ </h1>";
+        return "index";
     }
 }

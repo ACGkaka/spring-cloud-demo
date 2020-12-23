@@ -1,5 +1,5 @@
 server:
-  port: 1006
+  port: 1004
 
 spring:
   datasource:
@@ -13,10 +13,19 @@ spring:
     suffix: .html
     encoding: UTF-8
     cache: false
+  resources:
+    static-locations: classpath:statics/
 
 mybatis:
-  basepackage: com.example.modules
+  basepackage: com.example.auth
   mapper-locations: "classpath*:mapper/**/*.xml"
+
+itdragon:
+  jwt:
+    secret: ITDragon
+    expiration: 86400
+    header: Authorization
+    tokenHead: Bearer
 
 ribbon:
   # http建立socket超时时间,毫秒

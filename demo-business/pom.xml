@@ -18,6 +18,12 @@
 
     <dependencies>
 
+        <!-- Thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+
         <!-- Apache Commons -->
         <dependency>
             <groupId>commons-io</groupId>

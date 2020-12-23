@@ -36,11 +36,6 @@ public class IndexController {
         return ResponseEntity.ok(new JwtResponseVO(token));
     }
 
-//    @PostMapping("/login")
-//    public void createAuthenticationToken(String username, String password) {
-//        authService.login(username, password);
-//    }
-
     @RequestMapping("/index")
     public String index() {
         return "index";
