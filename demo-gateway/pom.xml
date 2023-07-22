@@ -13,16 +13,15 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.M3</spring-cloud.version>
     </properties>
 
     <dependencies>
 
-        <!-- Fast Json -->
+        <!-- Spring boot Test -->
         <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.56</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
 
         <!-- Gateway -->
@@ -43,19 +42,13 @@
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!-- Lombok -->
+        <!-- 公共模块 -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <groupId>com.example</groupId>
+            <artifactId>common-spring-boot-starter</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
-        <!-- Spring boot Test -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>

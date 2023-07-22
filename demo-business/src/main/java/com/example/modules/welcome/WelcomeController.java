@@ -20,7 +20,7 @@ public class WelcomeController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WelcomeController.class);
 
-    @RequestMapping("/index")
+    @RequestMapping("/business")
     public String welcome() {
         LOGGER.info("有一个用户访问了系统。");
         return "index";

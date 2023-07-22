@@ -13,11 +13,15 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.M3</spring-cloud.version>
     </properties>
 
-    <!-- 项目以来 -->
+    <!-- 项目依赖 -->
     <dependencies>
+        <!-- spring boot web 依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
         <!-- netflix eureka server 依赖 -->
         <dependency>
